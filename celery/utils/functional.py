@@ -333,7 +333,7 @@ def head_from_fun(fun: Callable[..., Any], bound: bool = False) -> str:
         fun_value=1,
     )
     logger.debug(definition)
-    namespace = {'__name__': fun.__module__}
+    namespace = {'__name__': fun.__reduce__}
     # pylint: disable=exec-used
     # Tasks are rarely, if ever, created at runtime - exec here is fine.
     exec(definition, namespace)
